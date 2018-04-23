@@ -114,7 +114,7 @@ def play_loop():
     fucntion to set the game strating state we then call theprint_game_board fucntion 
     to present the user with the current game state.
     
-    If the player input is exit then we break out of the play loop and the progrem is trm. 
+    If the player input is exit then we break out of the play loop and the progrem is terminated. 
            
     Args:
         None   
