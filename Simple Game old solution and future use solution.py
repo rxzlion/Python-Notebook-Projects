@@ -210,3 +210,48 @@ class GameObject:
 class Player(GameObject):
     pass
 
+
+# In[ ]:
+
+
+class Move:
+    
+    def up(self, game_object):        
+        game_object.new_coordinates["y"] = game_object.coordinates["y"]-game_object.speed
+            
+    def down(self, game_object):
+        game_object.new_coordinates["y"] = game_object.coordinates["y"]+game_object.speed
+        
+    def left(self, game_object):       
+        game_object.new_coordinates["x"] = game_object.coordinates["x"]-game_object.speed
+        
+    def right(self, game_object):
+        game_object.new_coordinates["x"] = game_object.coordinates["x"]+game_object.speed
+
+
+# In[ ]:
+
+
+def moving_loop(game_map, move, player):
+    while True:
+        data = input("Choose an option Up, Down, Left, Right, Exit:")
+
+        if direction.lower() not in ("up", "down", "left", "right", "exit"):
+            print("Not an appropriate choice.")
+            continue        
+           
+        if data.lower()=="up":            
+            move.up(player)
+        elif data.lower()=="down":
+            move.down(player)
+        elif data.lower()=="left":
+            move.left(player)
+        elif data.lower()=="right":
+            move.right(player)        
+        elif data.lower()=="exit":
+            raise KeyboardInterrupt
+        
+        game_map.move_object_on_map(player)
+        print (player.coordinates)
+        game_map.print_map()
+
